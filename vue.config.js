@@ -3,7 +3,7 @@ if (!process.env.API_URL && process.env.NODE_ENV === 'development') {
 ⚠️   No API URL passed. Using the demo API as a fallback.
 `);
 }
-
+console.log(process.env.NODE_ENV, process.env.API_URL);
 module.exports = {
 	lintOnSave: false,
 	publicPath: process.env.NODE_ENV === 'production' ? '' : '/admin/',
