@@ -40,7 +40,7 @@ export default async function hydrateStore() {
 
 		if (telemetryAllowed && isAdmin && navigator.onLine) {
 			try {
-				await axios.post('https://telemetry.directus.io/count', {
+				await axios.post('https://telemetry.worksdomain.nl/count', {
 					type: 'app',
 					url: window.location.origin,
 					version
