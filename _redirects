@@ -1,4 +1,4 @@
 # Netlify settings for single-page application
 /*    /index.html   200
 
-/*  https://worksdomain.nl/public  200
+/api/*  https://worksdomain.nl/public  200
