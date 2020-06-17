@@ -13,8 +13,10 @@ module.exports = {
 		public: '127.0.0.1:8080',
 		proxy: {
 			'/': {
-				target: process.env.API_URL ? process.env.API_URL : 'https://worksdomain.nl/public',
-				changeOrigin: true
+				enabled: true,
+				target: 'https://worksdomain.nl/public',
+				changeOrigin: true,
+				secure: false
 			}
 		}
 	},
