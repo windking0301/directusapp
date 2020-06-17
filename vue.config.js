@@ -11,13 +11,12 @@ module.exports = {
 	devServer: {
 		allowedHosts: ['localhost', '.gitpod.io'],
 		public: '127.0.0.1:8080',
+		index: '',
 		proxy: {
-			'/': {
-				enabled: true,
-				target: 'https://worksdomain.nl/public',
-				changeOrigin: true,
-				secure: false
-			}
+			context: () => true,
+			target: 'https://worksdomain.nl/public',
+			changeOrigin: true,
+			secure: false
 		}
 	},
 
