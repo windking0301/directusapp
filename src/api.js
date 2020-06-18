@@ -7,7 +7,7 @@ const apiRootPath = parts.slice(0, adminIndex).join('/') + '/';
 
 const client = new SDK({
 	mode: 'cookie',
-	url: apiRootPath
+	url: 'https://worksdomain.nl/public/'
 });
 
 export default client;

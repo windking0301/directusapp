@@ -2,8 +2,8 @@
 const path = window.location.pathname;
 const parts = path.split('/');
 const adminIndex = parts.indexOf('admin');
-const apiRootPath = parts.slice(0, adminIndex).join('/') + '/';
-
+const apiRootPath = 'https://worksdomain.nl/public/' + parts.slice(0, adminIndex).join('/') + '/';
+console.log(apiRootPath, 'apiPath');
 // Default state
 export default {
 	hydrated: false,

@@ -3,30 +3,20 @@ if (!process.env.API_URL && process.env.NODE_ENV === 'development') {
 ⚠️   No API URL passed. Using the demo API as a fallback.
 `);
 }
-const proxyMiddleware = require('http-proxy-middleware');
-
-const PROXY = 'https://worksdomain.nl/public';
 
 module.exports = {
 	lintOnSave: false,
 	publicPath: process.env.NODE_ENV === 'production' ? '' : '/admin/',
 
 	devServer: {
-		index: '',
-		serveIndex: false,
-		historyApiFallback: false,
-		progress: false,
-		proxy: {
-			'^/': {
-				target: PROXY,
-				ws: false,
-				changeOrigin: true
-			}
-		},
-		staticOptions: {
-			redirect: false
-		},
-		after: app => app.use('/', proxyMiddleware(PROXY))
+		allowedHosts: ['localhost', '.gitpod.io'],
+		public: '127.0.0.1:8080',
+		// proxy: {
+		// 	'/': {
+		// 		target: process.env.API_URL ? process.env.API_URL : 'https://demo.directus.io/',
+		// 		changeOrigin: true
+		// 	}
+		// }
 	},
 
 	// There are so many chunks (from all the interfaces / layouts) that we need to make sure to not

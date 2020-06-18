@@ -175,7 +175,6 @@ export async function updateProjectInfo({ commit, state }, key) {
 	const apiRootPath = state.apiRootPath;
 	const url = apiRootPath + key + '/';
 	commit(SET_PROJECT_STATUS, { key: key, status: 'loading' });
-
 	try {
 		const response = await axios.get(url);
 		const {
@@ -214,7 +213,6 @@ export async function updateProjectInfo({ commit, state }, key) {
 export async function getProjects({ state, dispatch, commit }, force) {
 	const currentProjectKey = state.currentProjectKey;
 	const apiRootPath = state.apiRootPath;
-
 	if (force === true || state.projects === null || state.projects === false) {
 		const url = apiRootPath + 'server/projects';
 
@@ -249,7 +247,6 @@ export async function getProjects({ state, dispatch, commit }, force) {
 			}
 		}
 	}
-
 	// CLOUD
 	// If the project is a Directus Cloud project, fetch the project keys from the Cloud API instead
 	if (isCloudProject(currentProjectKey)) {
@@ -272,18 +269,17 @@ export async function getProjects({ state, dispatch, commit }, force) {
 			console.log(error);
 		}
 	}
-
+	console.log(state.projects);
 	// If there's no pre-selected project, default to the first available one in the projects array
 	if (state.projects?.length > 0 && currentProjectKey === null) {
 		dispatch('setCurrentProject', state.projects[0].key);
 	}
-
+	// by directus
 	if (state.projects !== null && state.projects !== false) {
 		// Fetch the detailed information for each project asynchronously.
 		return Promise.allSettled(
 			state.projects.map(p => p.key).map(key => dispatch('updateProjectInfo', key))
 		);
 	}
-
 	return Promise.resolve();
 }
